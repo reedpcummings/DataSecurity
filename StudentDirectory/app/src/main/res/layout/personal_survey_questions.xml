@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- MAY NEED TO CHANGE TO CONSTRAINT LAYOUT -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_survey"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:paddingBottom="70dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/read_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/read"
+        android:textSize="32sp"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/read_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/movies_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/movies"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/movies_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/hookup_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/hookup"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/hookup_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/sports_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/sports"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/sports_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/workout_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/workout"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/workout_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/hiking_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/hiking"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/hiking_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/religious_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/religious"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/religious_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/social_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/social"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/social_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/drink_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/drink"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/drink_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/smoke_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/smoke"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/smoke_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/music_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/music"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/music_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="35dp"
+        android:entries="@array/survey_personal_answers"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        android:text="@string/submit"
+        android:layout_gravity="center"/>
+
+</LinearLayout>
