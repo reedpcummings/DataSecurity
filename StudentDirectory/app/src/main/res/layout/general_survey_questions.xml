@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general_survey"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:paddingBottom="70dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/first_name_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/firstName"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/first_name_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/gender_name_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/gender"
+        android:paddingTop="35dp"
+        style="@style/InputLabel"/>
+
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/gender_answers"
+        android:paddingBottom="35dp"
+        android:prompt="@string/spinner_prompt">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/age_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/age"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/age_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/phone_number_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/number"
+        android:paddingTop="35dp"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/phone_number_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/email_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="@string/email"
+        android:paddingTop="35dp"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/email_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="textEmailAddress"/>
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        android:text="@string/submit"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

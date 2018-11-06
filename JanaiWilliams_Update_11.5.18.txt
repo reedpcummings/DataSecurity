@@ -1,0 +1,18 @@
+<!-- Janai Williams: Update 11/5/18 -->
+
+*Made a couple design changes for the app. Refer to images for representation.
+**SQLite DB needs to be a java class in the app. Refer to databaseHelper.java example located in the project
+
+1) App currently launches from the Homepage activity because login activity is not implemented yet. When ready can change
+the app to launch from the login activity by changing a couple lines of code in the Android Manifest. To do this swap the
+class names of LoginActivity and Homepage within the activity tags.
+
+2) Not sure what the search button is supposed to do. So left the Search and Logout button's functionality to be implemented later. 
+Though the buttons itself works and are responsive to clicks.
+
+3) Submit buttons for the surveys work and are responsive but their function needs to be implemented. Left that up to whoever is
+doing the SQLite DB since that data will be feed to the db on submission. Also that same data needs to update the profile page when 
+submitted as well, so a functionality should be created for that as well.
+
+4)Currently still working on implementing the UI for the MATCHES and PROFILE screens. Besides that the UI is built for everything else.
+

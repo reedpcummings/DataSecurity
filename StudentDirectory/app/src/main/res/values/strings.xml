@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StudentDirectory</string>
+    <string name="app_name">Student Match Directory</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
@@ -13,4 +13,49 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="search">Search</string>
+    <string name="matches">Matches</string>
+    <string name="view_profile">View Profile</string>
+    <string name="settings">Settings</string>
+    <string name="back_button">back_button</string>
+    <string name="update_personal">Update Profile Survey</string>
+    <string name="update_general">Update General Survey</string>
+    <string name="logout">Logout</string>
+
+    <!-- Dummy Data Strings for Spinners -->
+    <string name="spinner_prompt">Choose One</string>
+
+    <string name="read"> Do you like to read?</string>
+    <string name="movies" >Do you watch movies?</string>
+    <string name="hookup">Looking for a hookup?</string>
+    <string name="sports">Do you like sports?</string>
+    <string name="workout">Do you workout?</string>
+    <string name="hiking">What about hiking/camping?</string>
+    <string name="religious">Are you religious?</string>
+    <string name="social">Do you use social media?</string>
+    <string name="drink">Do you drink?</string>
+    <string name="smoke">Do you smoke/vape?</string>
+    <string name="music">Do you listen to music?</string>
+    <string name="submit">Submit</string>
+
+    <string-array name="survey_personal_answers">
+        <item>Regularly</item>
+        <item>Sometimes</item>
+        <item>Rarely</item>
+        <item>Never</item>
+    </string-array>
+
+    <string name="firstName">First Name</string>
+    <string name="gender">Gender</string>
+    <string name="age">Age</string>
+    <string name="number">Phone Number</string>
+    <string name="email">Email</string>
+    <string name="homepage">Homepage</string>
+    <string name="profile_survey">Profile Survey</string>
+    <string name="general_survey">General Survey</string>
+
+    <string-array name="gender_answers">
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
 </resources>

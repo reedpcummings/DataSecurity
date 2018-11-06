@@ -14,10 +14,9 @@ You then enter the following command:
 Ex.
 .import MOCK_DATA.csv student_info;
 
-This creates a new table named student info and then creates rows with whatver data was in your .csv file.
+This creates a new table named student info and then creates rows with whatever data that was in your .csv file.
 
 You will need to make sure that the .csv file is in whatever directory you have your sqlite shell and .db file in.
-
 
 
 
@@ -29,3 +28,5 @@ You need to import the project from the file system after cloning the the projec
 After import, you need to build the project, launch the instance of the virtual device, and run the project.
 
 The login page should pop up on your virtual device.
+
+
