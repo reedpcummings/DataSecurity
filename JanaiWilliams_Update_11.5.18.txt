@@ -9,6 +9,16 @@ class names of LoginActivity and Homepage within the activity tags.
 
 2) Not sure what the search button is supposed to do. So left the Search and Logout button's functionality to be implemented later. 
 Though the buttons itself works and are responsive to clicks.
+    
+    
+    Answer: The search button is how we will find other people we want to match with. It is basically the Personal Survey page again,         except we use those answers to seach through people's personal survey responses, and return with a best match. The alogrithm for match     percentage is the following: 4 points for exact match, 2 points for 1 off the match, 1 point for 2 off the match, 0 points for             complete opposite answer.
+                              e.g.) Person1: Read> Reguarly, Person 2: Read> Reguarly = 4 pooints
+                                                             Person 3: Read> Sometimes = 2 points
+                                                             Person 4: Read> Rarely = 1 points
+                                                             Person 5: Read> Never = 0 points
+                                                             
+    We then show people's names, gender, and age in order of best match (highest point total), and they are allowed to send a request to       that person requesting a match. If the person accepts the match, the General Survey information is then available to see                   (phone number, email) for contact.            
+                                                
 
 3) Submit buttons for the surveys work and are responsive but their function needs to be implemented. Left that up to whoever is
 doing the SQLite DB since that data will be feed to the db on submission. Also that same data needs to update the profile page when 
