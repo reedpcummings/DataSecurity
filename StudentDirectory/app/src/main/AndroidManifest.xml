@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainScreens.Homepage"
+            android:name=".MainScreens.LoginPage"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainScreens.LoginActivity" />
+        <activity android:name=".MainScreens.Homepage" />
         <activity android:name=".Surveys.GeneralUserSurvey" />
         <activity android:name=".Surveys.PersonalProfileSurvey" />
         <activity android:name=".Utils.Settings" />

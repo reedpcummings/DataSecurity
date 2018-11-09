@@ -2,6 +2,7 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 //Created By Janai Williams: 11/2/17
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class PersonalProfileSurvey extends AppCompatActivity {
         socialSpinner = findViewById(R.id.social_spinner);
         drinkSpinner = findViewById(R.id.drink_spinner);
         smokeSpinner = findViewById(R.id.smoke_spinner);
-        musicSpinner = findViewById(R.id.smoke_spinner);
+        musicSpinner = findViewById(R.id.music_spinner);
     }
 
     private void setupSubmitButton(){
@@ -65,7 +66,12 @@ public class PersonalProfileSurvey extends AppCompatActivity {
                  *  UPON COMPLETION **/
 
                 /**TESTING**/
-                Toast.makeText(getApplicationContext(),
+
+                //addStudentP(username);
+
+
+
+                /*Toast.makeText(getApplicationContext(),
                         "Read Spinner: " + String.valueOf(readSpinner.getSelectedItem()) +
                                 "\nMovies Spinner: " + String.valueOf(moviesSpinner.getSelectedItem()) +
                                 "\nHookup Spinner: " + String.valueOf(hookupSpinner.getSelectedItem()) +
@@ -77,8 +83,37 @@ public class PersonalProfileSurvey extends AppCompatActivity {
                                 "\nDrink Spinner: " + String.valueOf(drinkSpinner.getSelectedItem()) +
                                 "\nSmoke Spinner: " + String.valueOf(smokeSpinner.getSelectedItem()) +
                                 "\nMusic Spinner: " + String.valueOf(musicSpinner.getSelectedItem()),
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_LONG).show();*/
             }
         });
     }
+
+
+    public void addStudentP(String username) {
+        //sets up db handler
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+
+
+        //creating a new student with general info from the values in the fields
+        StudentPersonal studentP = new StudentPersonal();
+        studentP.setRead(readSpinner.getSelectedItem().toString());
+        studentP.setMovies(moviesSpinner.getSelectedItem().toString());
+        studentP.setHookup(hookupSpinner.getSelectedItem().toString());
+        studentP.setSports(sportsSpinner.getSelectedItem().toString());
+        studentP.setWorkout(workoutSpinner.getSelectedItem().toString());
+        studentP.setHiking(hikingSpinner.getSelectedItem().toString());
+        studentP.setReligious(religiousSpinner.getSelectedItem().toString());
+        studentP.setSocialMedia(socialSpinner.getSelectedItem().toString());
+        studentP.setDrink(drinkSpinner.getSelectedItem().toString());
+        studentP.setSmoke(smokeSpinner.getSelectedItem().toString());
+        studentP.setMusic(musicSpinner.getSelectedItem().toString());
+
+        //adds the student info to the db
+        dbHandler.updatePersonalSurvey(studentP);
+
+        //resets spinners, i think
+        setupSpinners();
+    }
+
+
 }

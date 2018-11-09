@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".MainScreens.LoginPage">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login or Register"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:paddingBottom="70dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/loginUsername_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Enter Username"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/loginUsername_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/loginPwd_floating_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="32sp"
+        android:text="Enter Password"
+        style="@style/InputLabel"/>
+
+    <EditText
+        android:id="@+id/loginPwd_edit"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/loginSubmit_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/update_personal"
+        android:textSize="24sp"
+        android:visibility="visible"
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/register_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:text="@string/update_personal"
+        android:textSize="24sp"
+        android:visibility="visible"
+        android:textAlignment="center"/>>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

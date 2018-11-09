@@ -1,4 +1,4 @@
-package com.example.rpcum.studentdirectory;
+package com.example.rpcum.studentdirectory.Surveys;
 
 public class StudentGeneral {
     // fields
@@ -6,13 +6,15 @@ public class StudentGeneral {
     private String pwd;
     private String firstName;
     private String gender;
-    private int age;
+    private String age;
     private String phoneNumber;
     private String email;
 
-    // constructor
-    public StudentGeneral(String id,String pwd, String studentname, String gender, int age, String phoneNumber, String email) {
-        this.username = id;
+    // constructors
+    public StudentGeneral() {}
+
+    public StudentGeneral(String username,String pwd, String studentname, String gender, String age, String phoneNumber, String email) {
+        this.username = username;
         //will need to change password management, just have it like this for now
         this.pwd = pwd;
         this.firstName = studentname;
@@ -54,11 +56,11 @@ public class StudentGeneral {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 

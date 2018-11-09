@@ -1,4 +1,4 @@
-package com.example.rpcum.studentdirectory;
+package com.example.rpcum.studentdirectory.Surveys;
 
 public class StudentPersonal {
 
@@ -8,6 +8,7 @@ public class StudentPersonal {
     private String movies;
     private String hookup;
     private String sports;
+    private String workout;
     private String hiking;
     private String religious;
     private String socialMedia;
@@ -18,8 +19,10 @@ public class StudentPersonal {
     //constructors
     public StudentPersonal() {}
 
+
     public String getUsername() {
         return username;
+
     }
 
     public String getRead() {
@@ -53,6 +56,14 @@ public class StudentPersonal {
     public void setSports(String sports) {
         this.sports = sports;
     }
+    public String getWorkout() {
+        return workout;
+    }
+
+    public void setWorkout(String workout) {
+        this.workout = workout;
+    }
+
 
     public String getHiking() {
         return hiking;
