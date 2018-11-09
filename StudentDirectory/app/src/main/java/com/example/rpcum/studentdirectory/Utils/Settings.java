@@ -3,6 +3,7 @@ package com.example.rpcum.studentdirectory.Utils;
 //Created By Janai Williams: 11/2/17
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,12 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.rpcum.studentdirectory.MainScreens.LoginPage;
 import com.example.rpcum.studentdirectory.R;
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
 
 public class Settings extends AppCompatActivity {
+
+    SharedPreferences sp;
 
     private Button updateProfileButton, updateGeneralButton, logoutButton;
     private Intent intent;
@@ -79,12 +84,14 @@ public class Settings extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /**IMPLEMENT METHOD TO LOGOUT OF APPLICATION **/
 
-                /**NEEDS TO RETURN TO LOGIN PAGE(LOGINACTIVITY) UPON COMPLETION **/
+//                SharedPreferences.Editor editor = sp.edit();
+//                editor.putBoolean("loggedIn", false);
+//                editor.putString("username", "");
+//                editor.apply();
 
-                /**TESTING**/
-                Toast.makeText(getApplicationContext(), "It Works!", Toast.LENGTH_LONG).show();
+                intent = new Intent(getApplicationContext(), LoginPage.class);
+                startActivity(intent);
 
             }
         });

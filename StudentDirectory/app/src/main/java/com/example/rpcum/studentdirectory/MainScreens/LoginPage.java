@@ -1,6 +1,7 @@
 package com.example.rpcum.studentdirectory.MainScreens;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.R;
+import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
 import com.example.rpcum.studentdirectory.Surveys.MyDBHandler;
 import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 
 
 public class LoginPage extends AppCompatActivity {
+
+    SharedPreferences sp;
+
 
     private Button loginButton, newUserButton;
     private Intent intent;
@@ -27,6 +32,8 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
         init();
+
+        sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
     }
 
     private void init() {
@@ -39,7 +46,7 @@ public class LoginPage extends AppCompatActivity {
 
     private void setupActionBar() {
         actionBar = getSupportActionBar();
-        //actionBar.setTitle("");
+        actionBar.setTitle("");
     }
 
     private void setupNewUserButton() {
@@ -48,8 +55,8 @@ public class LoginPage extends AppCompatActivity {
         newUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //createNewUser();
-                Toast.makeText(getApplicationContext(),"It Works!", Toast.LENGTH_LONG).show();
+                intent = new Intent(getApplicationContext(), GeneralUserSurvey.class);
+                startActivity(intent);
             }
         });
     }
@@ -61,11 +68,16 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               // attemptLogin();
-                //createNewUser();
-                intent = new Intent(getApplicationContext(), Homepage.class);
-                startActivity(intent);
+//                if(attemptLogin()) {
+//
+//                    SharedPreferences.Editor editor = sp.edit();
+//                    editor.putString("username",String.valueOf(username.getText()));
+//                    editor.putBoolean("loggedIn",true);
+//                    editor.apply();
 
+                    intent = new Intent(getApplicationContext(), Homepage.class);
+                    startActivity(intent);
+                //}
 
             }
         });
@@ -79,25 +91,22 @@ public class LoginPage extends AppCompatActivity {
     }
 
 
-    public void attemptLogin() {
+    public boolean attemptLogin() {
         MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
 
-        String pwdHash = (String)String.valueOf(pwd.getText().hashCode());
+        String pwdHash = String.valueOf(pwd.getText().hashCode());
         String usernameText = String.valueOf(username.getText());
         if(dbHandler.DBattemptLogin(usernameText,pwdHash)) {
-
-            LoggedInTuple.loggedInInner user = new LoggedInTuple.loggedInInner();
-            user.logIn(usernameText);
+            return true;
             //go to homepage
 
         }
         else
             pwd.setText("");
             Toast.makeText(getApplicationContext(),"Wrong Username or Password.", Toast.LENGTH_LONG).show();
+            return false;
     }
 
 
-    public void createNewUser() {
-        //load general survey page
-    }
+
 }

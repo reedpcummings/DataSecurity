@@ -27,7 +27,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "    pwd         STRING  UNIQUE,\n" +
                 "    firstName   STRING,\n" +
                 "    gender      STRING,\n" +
-                "    age         INTEGER,\n" +
+                "    age         STRING,\n" +
                 "    phoneNumber STRING,\n" +
                 "    email       STRING\n" +
                 ");\n";
@@ -65,7 +65,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     //this function will load the info to the screen
-    public String loadHandler() {return "loadHandler";}
+    public String[] loadPersonalProfile(String username) {
+
+        String[] profileInfo = {getFirstName(username),getGender(username),getAge(username),
+                getPhone(username), getEmail(username),getUsername(username) };
+
+        return profileInfo;
+    }
 
     //this function will add the new user to the existing table above(public table) and then create a new table
     //for the new user's survey responses
@@ -73,7 +79,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
 
         String ADD_ROW = "INSERT INTO " + TABLE_NAME1 + " VALUES (" +
-                null + "," + null + "," + studentG.getFirstName() + "," +
+                studentG.getUsername() + "," + studentG.getPwd() + "," + studentG.getFirstName() + "," +
                 studentG.getGender() + "," + studentG.getAge() + "," +
                 studentG.getPhoneNumber() + "," + studentG.getEmail() + ");";
 
@@ -94,10 +100,17 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         //insert survey info into db
-        String UPDATE_SURVEY = "Update surveyInfo set read = " +studentP.getRead() + "";
+        String UPDATE_SURVEY = "Update surveyInfo set read = " +studentP.getRead() +
+                ", movies = " + studentP.getMovies() + ", hookup = " + studentP.getHookup() +
+                ", sports = " + studentP.getSports() + ", workout = " + studentP.getWorkout() +
+                ", hiking = " + studentP.getHiking() + ", religious = " + studentP.getReligious() +
+                ", socialMedia = " + studentP.getSocialMedia() + ", drink = " + studentP.getDrink() +
+                ", smoke = " + studentP.getSmoke() + ", music = " + studentP.getMusic() +
+                " where username =  " + studentP.getUsername();
 
+        db.execSQL(UPDATE_SURVEY);
 
-
+        db.close();
     }
 
     //search for a username
@@ -119,8 +132,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     public void addPersonalRow(SQLiteDatabase db, String username) {
-        String FILL_TABLE_WITH_USERNAME = "Insert into surveyInfo VALUES(" + username
-                + ",null,null,null,null,null,null,null,null,null,null,null";
+        String FILL_TABLE_WITH_USERNAME = "Insert into surveyInfo VALUES(\"" + username
+                + "\"" + ",null,null,null,null,null,null,null,null,null,null,null";
 
         db.execSQL(FILL_TABLE_WITH_USERNAME);
 
@@ -145,6 +158,73 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
+    public String getFirstName(String username) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String fname = cursor.getString(0);
+        return fname;
+    }
+
+    public String getGender(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String gender = cursor.getString(1);
+        return gender;
+
+    }
+
+    public String getAge(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String age = cursor.getString(2);
+        return age;
+    }
+
+    public String getPhone(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String phone = cursor.getString(3);
+        return phone;
+    }
+
+    public String getEmail(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String email = cursor.getString(4);
+        return email;
+    }
+
+    public String getUsername(String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String GET_USERNAME = "Select firstName, gender, age, phoneNumber, " +
+                "email, username from generalInfo where username = \""
+                + username + "\"";
+        Cursor cursor = db.rawQuery(GET_USERNAME,null);
+
+        String uname = cursor.getString(5);
+        return uname;
+    }
 
 
 

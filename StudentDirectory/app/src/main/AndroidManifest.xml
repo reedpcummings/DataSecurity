@@ -28,7 +28,7 @@
         <activity android:name=".Surveys.PersonalProfileSurvey" />
         <activity android:name=".Utils.Settings" />
         <activity android:name=".MainScreens.MatchResults" />
-        <activity android:name=".MainScreens.ProfilePage"></activity>
+        <activity android:name=".MainScreens.PersonalProfilePage"></activity>
     </application>
 
 </manifest>

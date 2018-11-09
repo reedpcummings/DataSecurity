@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="4"
-    tools:context=".MainScreens.LoginPage">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,54 +16,52 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/loginUsername_floating_view"
+        android:id="@+id/username_floating_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Enter Username"
+        android:text="username"
         style="@style/InputLabel"/>
 
     <EditText
         android:id="@+id/loginUsername_edit"
         android:layout_width="400dp"
-        android:layout_height="match_parent"
-        android:inputType="text"/>
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="username"/>
 
     <TextView
-        android:id="@+id/loginPwd_floating_view"
+        android:id="@+id/pwd_floating_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="Enter Password"
+        android:text="Password"
         style="@style/InputLabel"/>
 
     <EditText
         android:id="@+id/loginPwd_edit"
         android:layout_width="400dp"
-        android:layout_height="match_parent"
-        android:inputType="textPassword"/>
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Password"/>
 
     <Button
         android:id="@+id/loginSubmit_button"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="@string/update_personal"
-        android:textSize="24sp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
         android:visibility="visible"
-        android:textAlignment="center"/>
+        android:text="Log In"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/register_button"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="@string/update_personal"
-        android:textSize="24sp"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
         android:visibility="visible"
-        android:textAlignment="center"/>>
+        android:text="New User"
+        android:layout_gravity="center"/>
+
+
 
 
 

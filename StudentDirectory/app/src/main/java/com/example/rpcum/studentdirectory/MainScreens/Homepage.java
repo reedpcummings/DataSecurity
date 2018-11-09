@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.R;
-import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
 import com.example.rpcum.studentdirectory.Utils.Settings;
 
 
@@ -88,7 +87,7 @@ public class Homepage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                intent = new Intent(getApplicationContext(), ProfilePage.class);
+                intent = new Intent(getApplicationContext(), PersonalProfilePage.class);
                 startActivity(intent);
             }
         });

@@ -2,6 +2,8 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 //Created By Janai Williams: 11/2/17
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
 
 public class GeneralUserSurvey extends AppCompatActivity {
@@ -19,6 +22,8 @@ public class GeneralUserSurvey extends AppCompatActivity {
     private Spinner genderSpinner;
     private Button submitButton;
     private ActionBar actionBar;
+    private Intent intent;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +65,22 @@ public class GeneralUserSurvey extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /** METHOD NEEDS TO SEND SAVED DATA TO DB **/
 
-                /** IMPLEMENT: Disable submit button until all forms are filled **/
 
-                /**NEEDS TO RETURN TO SETTINGS PAGE UPON COMPLETION **/
+//                if(sp.getBoolean("loggedIn",false) && sp.getString("username","").equals(String.valueOf(username.getText()))) {
+//                    //usernameCheckOriginal();
+//                    if (confirmPwd()) {
+//                        updateStudentG();
+//                    }
+//                }
+//                else {
+//                        addStudentG();
+//                }
 
-                /**TESTING**/
 
-                //usernameCheckOriginal();
-                //confirmPwd();
-                //addStudentG();
+                intent = new Intent(getApplicationContext(), Homepage.class);
+                startActivity(intent);
+
 
 
 
@@ -112,13 +122,29 @@ public class GeneralUserSurvey extends AppCompatActivity {
 //        email.setText("");
     }
 
-    public void confirmPwd() {
+    public void updateStudentG() {
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+
+        //updating a student with general info from the values in the
+        StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), String.valueOf(pwd.getText().hashCode()),
+                String.valueOf(firstName.getText()), genderSpinner.getSelectedItem().toString(),
+                String.valueOf(age.getText()), String.valueOf(phoneNumber.getText()),
+                String.valueOf(email.getText()));
+
+
+        //adds the student info to the db
+        dbHandler.updateGeneralSurvey(studentG);
+
+    }
+
+    public boolean confirmPwd() {
 
         if(String.valueOf(pwd.getText()).length() < 4) {
 
             pwd.setText("");
             confirmPwd.setText("");
             Toast.makeText(getApplicationContext(),"Password is not long enough. Try again", Toast.LENGTH_LONG).show();
+            return false;
         }
 
         //this is not working for some reason right now. the other one works.
@@ -127,11 +153,12 @@ public class GeneralUserSurvey extends AppCompatActivity {
             pwd.setText("");
             confirmPwd.setText("");
             Toast.makeText(getApplicationContext(),"Passwords do not match. Try again.", Toast.LENGTH_LONG).show();
+            return false;
         }
 
         else {
             Toast.makeText(getApplicationContext(),"Passwords match", Toast.LENGTH_LONG).show();
-            return;
+            return true;
         }
     }
 
