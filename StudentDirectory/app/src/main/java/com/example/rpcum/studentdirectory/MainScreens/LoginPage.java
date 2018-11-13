@@ -1,5 +1,6 @@
 package com.example.rpcum.studentdirectory.MainScreens;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 public class LoginPage extends AppCompatActivity {
 
     SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
 
     private Button loginButton, newUserButton;
@@ -31,9 +33,18 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_page);
-        init();
 
+        //Context context = getActivity();
         sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
+        editor = sp.edit();
+        editor.putBoolean("loggedIn",false);
+        editor.putString("username","");
+        editor.commit();
+
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+        dbHandler.deleteContents();
+
+        init();
     }
 
     private void init() {
@@ -68,16 +79,16 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                if(attemptLogin()) {
-//
-//                    SharedPreferences.Editor editor = sp.edit();
-//                    editor.putString("username",String.valueOf(username.getText()));
-//                    editor.putBoolean("loggedIn",true);
-//                    editor.apply();
+                if(attemptLogin()) {
+
+                    SharedPreferences.Editor editor = sp.edit();
+                    editor.putString("username",String.valueOf(username.getText()));
+                    editor.putBoolean("loggedIn",true);
+                    editor.apply();
 
                     intent = new Intent(getApplicationContext(), Homepage.class);
                     startActivity(intent);
-                //}
+                }
 
             }
         });
@@ -98,7 +109,7 @@ public class LoginPage extends AppCompatActivity {
         String usernameText = String.valueOf(username.getText());
         if(dbHandler.DBattemptLogin(usernameText,pwdHash)) {
             return true;
-            //go to homepage
+
 
         }
         else

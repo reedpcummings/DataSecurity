@@ -37,6 +37,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
         setupEditTexts();
         setupSpinner();
         setupSubmitButton();
+        sp = getSharedPreferences("loggedIn", MODE_PRIVATE);
     }
 
     private void setupActionBar() {
@@ -67,15 +68,15 @@ public class GeneralUserSurvey extends AppCompatActivity {
             public void onClick(View view) {
 
 
-//                if(sp.getBoolean("loggedIn",false) && sp.getString("username","").equals(String.valueOf(username.getText()))) {
-//                    //usernameCheckOriginal();
-//                    if (confirmPwd()) {
-//                        updateStudentG();
-//                    }
-//                }
-//                else {
-//                        addStudentG();
-//                }
+                if(sp.getBoolean("loggedIn",false) || sp.getString("username","").equals(String.valueOf(username.getText()))) {
+                    //usernameCheckOriginal();
+                    if (confirmPwd()) {
+                        updateStudentG();
+                    }
+                }
+                else {
+                        addStudentG();
+                }
 
 
                 intent = new Intent(getApplicationContext(), Homepage.class);

@@ -16,27 +16,20 @@ public class PersonalProfilePage extends AppCompatActivity {
     SharedPreferences sp;
 
     private ActionBar actionBar;
-    TextView firstName = (TextView)findViewById(R.id.profile_firstName);
-    TextView gender = (TextView)findViewById(R.id.profile_gender);
-    TextView age = (TextView)findViewById(R.id.profile_age);
-    TextView phoneNumber = (TextView)findViewById(R.id.profile_phoneNumber);
-    TextView email = (TextView)findViewById(R.id.profile_email);
-    TextView username = (TextView)findViewById(R.id.profile_username);
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        init();
-    }
 
-    private void init() {
-        setupActionBar();
-        setupTextViews();
-    }
-
-    private void setupTextViews() {
+        TextView firstName = findViewById(R.id.profile_firstName);
+        TextView gender = findViewById(R.id.profile_gender);
+        TextView age = findViewById(R.id.profile_age);
+        TextView phoneNumber = findViewById(R.id.profile_phoneNumber);
+        TextView email = findViewById(R.id.profile_email);
+        TextView username = findViewById(R.id.profile_username);
 
         if(sp.getBoolean("loggedIn",false)) {
             MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
@@ -57,7 +50,14 @@ public class PersonalProfilePage extends AppCompatActivity {
             firstName.setText("not logged in");
         }
 
+        firstName.setText("not logged in");
+        init();
     }
+
+    private void init() {
+        setupActionBar();
+    }
+
 
     private void setupActionBar() {
         actionBar = getSupportActionBar();

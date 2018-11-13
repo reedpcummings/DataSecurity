@@ -2,6 +2,7 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 //Created By Janai Williams: 11/2/17
 
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import com.example.rpcum.studentdirectory.R;
 
 public class PersonalProfileSurvey extends AppCompatActivity {
+
+    SharedPreferences sp;
 
     private Spinner readSpinner, moviesSpinner, hookupSpinner, sportsSpinner, workoutSpinner,
             hikingSpinner, religiousSpinner, socialSpinner, drinkSpinner, smokeSpinner, musicSpinner;
@@ -67,7 +70,7 @@ public class PersonalProfileSurvey extends AppCompatActivity {
 
                 /**TESTING**/
 
-                //addStudentP(username);
+                addStudentP();
 
 
 
@@ -89,13 +92,13 @@ public class PersonalProfileSurvey extends AppCompatActivity {
     }
 
 
-    public void addStudentP(String username) {
+    public void addStudentP() {
         //sets up db handler
         MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
 
-
         //creating a new student with general info from the values in the fields
         StudentPersonal studentP = new StudentPersonal();
+        studentP.setUsername(sp.getString("username",""));
         studentP.setRead(readSpinner.getSelectedItem().toString());
         studentP.setMovies(moviesSpinner.getSelectedItem().toString());
         studentP.setHookup(hookupSpinner.getSelectedItem().toString());

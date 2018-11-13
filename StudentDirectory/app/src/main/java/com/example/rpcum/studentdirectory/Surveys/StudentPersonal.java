@@ -25,6 +25,10 @@ public class StudentPersonal {
 
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getRead() {
         return read;
     }

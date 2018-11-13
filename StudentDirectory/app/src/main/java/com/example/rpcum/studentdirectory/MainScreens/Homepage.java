@@ -1,6 +1,6 @@
 package com.example.rpcum.studentdirectory.MainScreens;
 
-//Created By Janai Williams: 11/2/17
+
 
 import android.content.Intent;
 import android.support.v7.app.ActionBar;

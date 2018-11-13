@@ -11,12 +11,12 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
     private static final String DB_NAME = "datingApp.db";
     private static final String TABLE_NAME1 = "generalInfo";
-    private static final String TABLE_NAME2 = "surveyInfo";
 
 
     public MyDBHandler (Context context,String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DB_NAME, factory, DB_VERSION);
         SQLiteDatabase.create(factory);
+
     }
 
     @Override
@@ -67,10 +67,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
     //this function will load the info to the screen
     public String[] loadPersonalProfile(String username) {
 
-        String[] profileInfo = {getFirstName(username),getGender(username),getAge(username),
+        return new String[] {getFirstName(username),getGender(username),getAge(username),
                 getPhone(username), getEmail(username),getUsername(username) };
 
-        return profileInfo;
     }
 
     //this function will add the new user to the existing table above(public table) and then create a new table
@@ -78,10 +77,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void addNewUserHandler(StudentGeneral studentG) {
 
 
-        String ADD_ROW = "INSERT INTO " + TABLE_NAME1 + " VALUES (" +
-                studentG.getUsername() + "," + studentG.getPwd() + "," + studentG.getFirstName() + "," +
-                studentG.getGender() + "," + studentG.getAge() + "," +
-                studentG.getPhoneNumber() + "," + studentG.getEmail() + ");";
+        String ADD_ROW = "INSERT INTO " + TABLE_NAME1 + " VALUES (\"" +
+                studentG.getUsername() + "\",\"" + studentG.getPwd() + "\",\"" + studentG.getFirstName() + "\",\"" +
+                studentG.getGender() + "\",\"" + studentG.getAge() + "\",\"" +
+                studentG.getPhoneNumber() + "\",\"" + studentG.getEmail() + "\");";
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL(ADD_ROW);
@@ -100,13 +99,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         //insert survey info into db
-        String UPDATE_SURVEY = "Update surveyInfo set read = " +studentP.getRead() +
-                ", movies = " + studentP.getMovies() + ", hookup = " + studentP.getHookup() +
-                ", sports = " + studentP.getSports() + ", workout = " + studentP.getWorkout() +
-                ", hiking = " + studentP.getHiking() + ", religious = " + studentP.getReligious() +
-                ", socialMedia = " + studentP.getSocialMedia() + ", drink = " + studentP.getDrink() +
-                ", smoke = " + studentP.getSmoke() + ", music = " + studentP.getMusic() +
-                " where username =  " + studentP.getUsername();
+        String UPDATE_SURVEY = "Update surveyInfo set read = \"" +studentP.getRead() +
+                "\", movies = \"" + studentP.getMovies() + "\", hookup = \"" + studentP.getHookup() +
+                "\", sports = \"" + studentP.getSports() + "\", workout = \"" + studentP.getWorkout() +
+                "\", hiking = \"" + studentP.getHiking() + "\", religious = \"" + studentP.getReligious() +
+                "\", socialMedia = \"" + studentP.getSocialMedia() + "\", drink = \"" + studentP.getDrink() +
+                "\", smoke = \"" + studentP.getSmoke() + "\", music = \"" + studentP.getMusic() +
+                "\" where username =  \"" + studentP.getUsername() + "\"";
 
         db.execSQL(UPDATE_SURVEY);
 
@@ -117,9 +116,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public boolean checkUsernameValid(String name) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String QUERY = "Select count(*) from generalInfo where username = " + name + ";";
+        String QUERY = "Select count(*) from generalInfo where username = \"" + name + "\";";
         Cursor cursor = db.rawQuery(QUERY,null);
         int count = cursor.getCount();
+        cursor.close();
 
         if (count > 0) {
             db.close();
@@ -132,8 +132,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
     public void addPersonalRow(SQLiteDatabase db, String username) {
-        String FILL_TABLE_WITH_USERNAME = "Insert into surveyInfo VALUES(\"" + username
-                + "\"" + ",null,null,null,null,null,null,null,null,null,null,null";
+        String FILL_TABLE_WITH_USERNAME = "Insert into surveyInfo (username) VALUES(\"" + username
+                + "\")"; /*+ ",null,null,null,null,null,null,null,null,null,null,null";*/
 
         db.execSQL(FILL_TABLE_WITH_USERNAME);
 
@@ -143,9 +143,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public boolean DBattemptLogin(String username, String pwd) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String QUERY = "Select count(*) from generalInfo where username = " + username + " and pwd = " + pwd + ";";
+        String QUERY = "Select count(*) from generalInfo where username = \"" + username + "\" and pwd = \"" + pwd + "\";";
         Cursor cursor = db.rawQuery(QUERY,null);
         int count = cursor.getCount();
+        cursor.close();
 
         if (count > 0) {
             db.close();
@@ -167,6 +168,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String fname = cursor.getString(0);
+        cursor.close();
         return fname;
     }
 
@@ -178,6 +180,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String gender = cursor.getString(1);
+        cursor.close();
         return gender;
 
     }
@@ -190,6 +193,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String age = cursor.getString(2);
+        cursor.close();
         return age;
     }
 
@@ -201,6 +205,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String phone = cursor.getString(3);
+        cursor.close();
         return phone;
     }
 
@@ -212,6 +217,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String email = cursor.getString(4);
+        cursor.close();
         return email;
     }
 
@@ -223,9 +229,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
 
         String uname = cursor.getString(5);
+        cursor.close();
         return uname;
     }
 
-
+    public void deleteContents() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String delete = "Delete from generalInfo;";
+        db.execSQL(delete);
+    }
 
 }
