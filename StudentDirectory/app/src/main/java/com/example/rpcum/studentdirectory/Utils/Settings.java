@@ -20,7 +20,7 @@ import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
 
 public class Settings extends AppCompatActivity {
 
-    SharedPreferences sp;
+    SharedPreferences sp = getSharedPreferences("loggedIn", MODE_PRIVATE);
 
     private Button updateProfileButton, updateGeneralButton, logoutButton;
     private Intent intent;
@@ -85,10 +85,10 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                SharedPreferences.Editor editor = sp.edit();
-//                editor.putBoolean("loggedIn", false);
-//                editor.putString("username", "");
-//                editor.apply();
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putBoolean("loggedIn", false);
+                editor.putString("username", "");
+                editor.apply();
 
                 intent = new Intent(getApplicationContext(), LoginPage.class);
                 startActivity(intent);

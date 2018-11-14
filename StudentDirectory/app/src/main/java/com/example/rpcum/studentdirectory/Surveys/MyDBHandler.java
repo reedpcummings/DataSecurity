@@ -1,5 +1,6 @@
 package com.example.rpcum.studentdirectory.Surveys;
 
+import android.database.CharArrayBuffer;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,7 +10,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     //information about DB
     private static final int DB_VERSION = 1;
-    private static final String DB_NAME = "datingApp.db";
+    private static final String DB_NAME = "datingApp3.db";
     private static final String TABLE_NAME1 = "generalInfo";
 
 
@@ -143,8 +144,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public boolean DBattemptLogin(String username, String pwd) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String QUERY = "Select count(*) from generalInfo where username = \"" + username + "\" and pwd = \"" + pwd + "\";";
+        CharArrayBuffer buffer = null;
+        String QUERY = "Select username from generalInfo where username = \"" + username + "\" and pwd = \"" + pwd + "\";";
         Cursor cursor = db.rawQuery(QUERY,null);
+        cursor.moveToFirst();
+        //cursor.copyStringToBuffer(0,buffer);
         int count = cursor.getCount();
         cursor.close();
 
@@ -166,6 +170,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String fname = cursor.getString(0);
         cursor.close();
@@ -178,6 +183,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String gender = cursor.getString(1);
         cursor.close();
@@ -191,6 +197,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String age = cursor.getString(2);
         cursor.close();
@@ -203,6 +210,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String phone = cursor.getString(3);
         cursor.close();
@@ -215,6 +223,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String email = cursor.getString(4);
         cursor.close();
@@ -227,6 +236,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 "email, username from generalInfo where username = \""
                 + username + "\"";
         Cursor cursor = db.rawQuery(GET_USERNAME,null);
+        cursor.moveToFirst();
 
         String uname = cursor.getString(5);
         cursor.close();
@@ -235,8 +245,24 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public void deleteContents() {
         SQLiteDatabase db = this.getWritableDatabase();
-        String delete = "Delete from generalInfo;";
+        String delete = "Drop Table generalInfo";
         db.execSQL(delete);
     }
 
+    public void createTable() {
+        String CREATE_TABLE1 = "CREATE TABLE generalInfo (\n" +
+                "    username    STRING  PRIMARY KEY ON CONFLICT FAIL\n" +
+                "                        UNIQUE,\n" +
+                "    pwd         STRING  UNIQUE,\n" +
+                "    firstName   STRING,\n" +
+                "    gender      STRING,\n" +
+                "    age         STRING,\n" +
+                "    phoneNumber STRING,\n" +
+                "    email       STRING\n" +
+                ");\n";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        createPersonalTable(db);
+        db.execSQL(CREATE_TABLE1);
+    }
 }

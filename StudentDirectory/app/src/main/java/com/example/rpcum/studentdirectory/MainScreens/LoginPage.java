@@ -41,8 +41,10 @@ public class LoginPage extends AppCompatActivity {
         editor.putString("username","");
         editor.commit();
 
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
-        dbHandler.deleteContents();
+//        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+//        dbHandler.deleteContents();
+//        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+//        dbHandler.createTable();
 
         init();
     }
@@ -62,6 +64,7 @@ public class LoginPage extends AppCompatActivity {
 
     private void setupNewUserButton() {
         newUserButton = getWindow().getDecorView().findViewById(R.id.register_button);
+
 
         newUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +106,9 @@ public class LoginPage extends AppCompatActivity {
 
 
     public boolean attemptLogin() {
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
-        String pwdHash = String.valueOf(pwd.getText().hashCode());
+        String pwdHash = String.valueOf(pwd.getText());
         String usernameText = String.valueOf(username.getText());
         if(dbHandler.DBattemptLogin(usernameText,pwdHash)) {
             return true;

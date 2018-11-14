@@ -2,6 +2,7 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 //Created By Janai Williams: 11/2/17
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
@@ -12,16 +13,18 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
 
 public class PersonalProfileSurvey extends AppCompatActivity {
 
-    SharedPreferences sp;
+
 
     private Spinner readSpinner, moviesSpinner, hookupSpinner, sportsSpinner, workoutSpinner,
             hikingSpinner, religiousSpinner, socialSpinner, drinkSpinner, smokeSpinner, musicSpinner;
     private Button submitButton;
     private ActionBar actionBar;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +74,8 @@ public class PersonalProfileSurvey extends AppCompatActivity {
                 /**TESTING**/
 
                 addStudentP();
+                intent = new Intent(getApplicationContext(), Homepage.class);
+                startActivity(intent);
 
 
 
@@ -94,8 +99,8 @@ public class PersonalProfileSurvey extends AppCompatActivity {
 
     public void addStudentP() {
         //sets up db handler
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
-
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
+        SharedPreferences sp = getSharedPreferences("loggedIn", MODE_PRIVATE);
         //creating a new student with general info from the values in the fields
         StudentPersonal studentP = new StudentPersonal();
         studentP.setUsername(sp.getString("username",""));

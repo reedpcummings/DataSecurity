@@ -4,6 +4,7 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
+
+import java.security.MessageDigest;
 
 public class GeneralUserSurvey extends AppCompatActivity {
 
@@ -76,6 +79,8 @@ public class GeneralUserSurvey extends AppCompatActivity {
                 }
                 else {
                         addStudentG();
+                        intent = new Intent(getApplicationContext(), PersonalProfileSurvey.class);
+                        startActivity(intent);
                 }
 
 
@@ -99,7 +104,13 @@ public class GeneralUserSurvey extends AppCompatActivity {
 
     public void addStudentG() {
         //sets up db handler
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
+
+//        String passwordToHash = String.valueOf(pwd.getText());
+//        String generatedPwd = null;
+//
+//        byte[] bytes = passwordToHash.getBytes();
+
 
         //creating a new student with general info from the values in the fields
         StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), String.valueOf(pwd.getText().hashCode()),
@@ -124,7 +135,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
     }
 
     public void updateStudentG() {
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
         //updating a student with general info from the values in the
         StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), String.valueOf(pwd.getText().hashCode()),
@@ -167,7 +178,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
 
         String checkName = String.valueOf(username.getText());
 
-        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
         if(dbHandler.checkUsernameValid(checkName)) {
             return;

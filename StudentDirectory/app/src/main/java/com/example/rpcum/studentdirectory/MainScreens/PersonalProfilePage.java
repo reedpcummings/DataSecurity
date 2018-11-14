@@ -31,8 +31,10 @@ public class PersonalProfilePage extends AppCompatActivity {
         TextView email = findViewById(R.id.profile_email);
         TextView username = findViewById(R.id.profile_username);
 
+        sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
+
         if(sp.getBoolean("loggedIn",false)) {
-            MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
+            MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
             String[] profileInfo;
             profileInfo = dbHandler.loadPersonalProfile(sp.getString("username", ""));
@@ -50,7 +52,7 @@ public class PersonalProfilePage extends AppCompatActivity {
             firstName.setText("not logged in");
         }
 
-        firstName.setText("not logged in");
+        //firstName.setText("not logged in");
         init();
     }
 
