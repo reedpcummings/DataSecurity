@@ -124,7 +124,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
         StringBuffer sb = new StringBuffer("drop");
 
         if(studentG.getFirstName().contentEquals(sb)){
-            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"First Name is not valid. Try again.", Toast.LENGTH_LONG).show();
             return;
         }
         if(studentG.getUsername().contentEquals(sb)){
@@ -132,15 +132,15 @@ public class GeneralUserSurvey extends AppCompatActivity {
             return;
         }
         if(studentG.getAge().contentEquals(sb)){
-            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Get Age is not valid. Try again.", Toast.LENGTH_LONG).show();
             return;
         }
         if(studentG.getPhoneNumber().contentEquals(sb)){
-            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Phone Number is not valid. Try again.", Toast.LENGTH_LONG).show();
             return;
         }
         if(studentG.getEmail().contentEquals(sb)){
-            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Email is not valid. Try again.", Toast.LENGTH_LONG).show();
             return;
         }
 
