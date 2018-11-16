@@ -19,6 +19,23 @@ public class StudentPersonal {
     //constructors
     public StudentPersonal() {}
 
+    public StudentPersonal(String username, String read, String movies, String hookup, String sports, String workout, String hiking,
+                           String religious, String socialMedia, String drink, String smoke, String music) {
+        this.username = username;
+        this.read = read;
+        this.movies = movies;
+        this.hookup = hookup;
+        this.sports = sports;
+        this.workout = workout;
+        this.hiking = hiking;
+        this.religious = religious;
+        this.socialMedia = socialMedia;
+        this.drink = drink;
+        this.smoke = smoke;
+        this.music = music;
+
+    }
+
 
     public String getUsername() {
         return username;

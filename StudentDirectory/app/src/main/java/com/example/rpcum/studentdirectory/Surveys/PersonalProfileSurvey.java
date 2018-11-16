@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
+import com.example.rpcum.studentdirectory.Utils.Settings;
+
+import java.util.ArrayList;
 
 public class PersonalProfileSurvey extends AppCompatActivity {
 
@@ -25,6 +28,9 @@ public class PersonalProfileSurvey extends AppCompatActivity {
     private Button submitButton;
     private ActionBar actionBar;
     private Intent intent;
+    SharedPreferences sp;
+    public String[] wants = new String[11];
+    public int[] wantsValues = new int[11];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,34 +70,23 @@ public class PersonalProfileSurvey extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /** METHOD NEEDS TO SEND SAVED DATA TO DB **/
 
-                /** IMPLEMENT: Disable submit button until all forms are filled **/
+            sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
 
-                /**NEEDS TO RETURN TO SETTINGS PAGE
-                 *  UPON COMPLETION **/
-
-                /**TESTING**/
-
+            if(!(sp.getBoolean("search",false))) {
                 addStudentP();
-                intent = new Intent(getApplicationContext(), Homepage.class);
+                intent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(intent);
+            }
+            else {
+                runSearch();
+                intent = new Intent(getApplicationContext(), SearchResults.class);
+                intent.putExtra("wants",wants);
+                intent.putExtra("wantValues", wantsValues);
+                intent.putExtra("username",sp.getString("username",""));
                 startActivity(intent);
 
-
-
-                /*Toast.makeText(getApplicationContext(),
-                        "Read Spinner: " + String.valueOf(readSpinner.getSelectedItem()) +
-                                "\nMovies Spinner: " + String.valueOf(moviesSpinner.getSelectedItem()) +
-                                "\nHookup Spinner: " + String.valueOf(hookupSpinner.getSelectedItem()) +
-                                "\nSports Spinner: " + String.valueOf(sportsSpinner.getSelectedItem()) +
-                                "\nWorkout Spinner: " + String.valueOf(workoutSpinner.getSelectedItem()) +
-                                "\nHiking Spinner: " + String.valueOf(hikingSpinner.getSelectedItem()) +
-                                "\nReligious Spinner: " + String.valueOf(religiousSpinner.getSelectedItem()) +
-                                "\nSocial Spinner: " + String.valueOf(socialSpinner.getSelectedItem()) +
-                                "\nDrink Spinner: " + String.valueOf(drinkSpinner.getSelectedItem()) +
-                                "\nSmoke Spinner: " + String.valueOf(smokeSpinner.getSelectedItem()) +
-                                "\nMusic Spinner: " + String.valueOf(musicSpinner.getSelectedItem()),
-                                Toast.LENGTH_LONG).show();*/
+            }
             }
         });
     }
@@ -119,9 +114,50 @@ public class PersonalProfileSurvey extends AppCompatActivity {
         //adds the student info to the db
         dbHandler.updatePersonalSurvey(studentP);
 
-        //resets spinners, i think
-        setupSpinners();
     }
 
+    public void runSearch(){
+
+//        String[] wants = {readSpinner.getSelectedItem().toString(),moviesSpinner.getSelectedItem().toString(),
+//            hookupSpinner.getSelectedItem().toString(),sportsSpinner.getSelectedItem().toString(),
+//            workoutSpinner.getSelectedItem().toString(),hikingSpinner.getSelectedItem().toString(),
+//            religiousSpinner.getSelectedItem().toString(),socialSpinner.getSelectedItem().toString(),
+//            drinkSpinner.getSelectedItem().toString(),smokeSpinner.getSelectedItem().toString(),
+//            musicSpinner.getSelectedItem().toString()};
+
+        wants[0] = readSpinner.getSelectedItem().toString();
+        wants[1] = moviesSpinner.getSelectedItem().toString();
+        wants[2] = hookupSpinner.getSelectedItem().toString();
+        wants[3] = sportsSpinner.getSelectedItem().toString();
+        wants[4] = workoutSpinner.getSelectedItem().toString();
+        wants[5] = hikingSpinner.getSelectedItem().toString();
+        wants[6] = religiousSpinner.getSelectedItem().toString();
+        wants[7] = socialSpinner.getSelectedItem().toString();
+        wants[8] = drinkSpinner.getSelectedItem().toString();
+        wants[9] = smokeSpinner.getSelectedItem().toString();
+        wants[10] = musicSpinner.getSelectedItem().toString();
+
+
+        wantsValues = new int[wants.length];
+        for(int i = 0; i < wants.length; i++) {
+            if(wants[i].equals("Regularly")) {
+                wantsValues[i] = 4;
+            }
+            else if(wants[i].equals("Sometimes")) {
+                wantsValues[i] = 3;
+            }
+            else if(wants[i].equals("Rarely")) {
+                wantsValues[i] = 2;
+            }
+            else if(wants[i].equals("Never")) {
+                wantsValues[i] = 1;
+            }
+        }
+
+
+//        ArrayList<String[]> results;
+//        results = dbHandler.searchForBestMatch(wants, wantsValues,sp.getString("username",""));
+//        return results;
+    }
 
 }

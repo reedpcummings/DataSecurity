@@ -10,11 +10,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.security.MessageDigest;
 
 import com.example.rpcum.studentdirectory.R;
 import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
 import com.example.rpcum.studentdirectory.Surveys.MyDBHandler;
 import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
+
+import java.security.MessageDigest;
 
 
 public class LoginPage extends AppCompatActivity {
@@ -39,6 +42,7 @@ public class LoginPage extends AppCompatActivity {
         editor = sp.edit();
         editor.putBoolean("loggedIn",false);
         editor.putString("username","");
+        editor.putBoolean("search",false);
         editor.commit();
 
 //        MyDBHandler dbHandler = new MyDBHandler(this, "datingApp.db", null, 1);
@@ -108,7 +112,10 @@ public class LoginPage extends AppCompatActivity {
     public boolean attemptLogin() {
         MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
-        String pwdHash = String.valueOf(pwd.getText());
+        //String pwdHash = String.valueOf(pwd.getText());
+
+        String pwdHash = dbHandler.hashPwd(String.valueOf(pwd.getText()));
+
         String usernameText = String.valueOf(username.getText());
         if(dbHandler.DBattemptLogin(usernameText,pwdHash)) {
             return true;
@@ -122,5 +129,4 @@ public class LoginPage extends AppCompatActivity {
     }
 
 
-
-}
+    }

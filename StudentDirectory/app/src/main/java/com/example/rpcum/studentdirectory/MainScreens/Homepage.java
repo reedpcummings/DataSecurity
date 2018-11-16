@@ -3,6 +3,7 @@ package com.example.rpcum.studentdirectory.MainScreens;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.R;
+import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 import com.example.rpcum.studentdirectory.Utils.Settings;
 
 
@@ -22,6 +24,7 @@ public class Homepage extends AppCompatActivity {
     private Intent intent;
     private ActionBar actionBar;
     private int itemID;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +69,14 @@ public class Homepage extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View view) {
-               /** METHOD NEEDS TO DO SOME SEARCH FUNCTION**/
 
-               /**TESTING**/
-               Toast.makeText(getApplicationContext(),"It Works!", Toast.LENGTH_LONG).show();
+               sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
+               SharedPreferences.Editor editor = sp.edit();
+               editor.putBoolean("search",true);
+               editor.apply();
+
+               intent = new Intent(getApplicationContext(), PersonalProfileSurvey.class);
+               startActivity(intent);
 
            }
         });
@@ -91,6 +98,10 @@ public class Homepage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void searchForBestMatch() {
+
     }
 
 

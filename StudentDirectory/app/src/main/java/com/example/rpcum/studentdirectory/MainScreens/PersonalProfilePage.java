@@ -39,12 +39,12 @@ public class PersonalProfilePage extends AppCompatActivity {
             String[] profileInfo;
             profileInfo = dbHandler.loadPersonalProfile(sp.getString("username", ""));
 
-            firstName.setText(profileInfo[0]);
-            gender.setText(profileInfo[1]);
-            age.setText(profileInfo[2]);
-            phoneNumber.setText(profileInfo[3]);
-            email.setText(profileInfo[4]);
-            username.setText(profileInfo[5]);
+            firstName.setText("First Name:  " + profileInfo[0]);
+            gender.setText("Gender:  " + profileInfo[1]);
+            age.setText("Age:  " + profileInfo[2]);
+            phoneNumber.setText("Phone Number:  " + profileInfo[3]);
+            email.setText("Email:  " + profileInfo[4]);
+            username.setText("Username:  " + profileInfo[5]);
 
         }
 

@@ -75,6 +75,8 @@ public class GeneralUserSurvey extends AppCompatActivity {
                     //usernameCheckOriginal();
                     if (confirmPwd()) {
                         updateStudentG();
+                        intent = new Intent(getApplicationContext(), Homepage.class);
+                        startActivity(intent);
                     }
                 }
                 else {
@@ -84,8 +86,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
                 }
 
 
-                intent = new Intent(getApplicationContext(), Homepage.class);
-                startActivity(intent);
+
 
 
 
@@ -110,16 +111,46 @@ public class GeneralUserSurvey extends AppCompatActivity {
 //        String generatedPwd = null;
 //
 //        byte[] bytes = passwordToHash.getBytes();
-
+        String pwdHash = dbHandler.hashPwd(String.valueOf(pwd.getText()));
 
         //creating a new student with general info from the values in the fields
-        StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), String.valueOf(pwd.getText().hashCode()),
+        StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), pwdHash,
                 String.valueOf(firstName.getText()), genderSpinner.getSelectedItem().toString(),
                 String.valueOf(age.getText()), String.valueOf(phoneNumber.getText()),
                 String.valueOf(email.getText()));
 
+
+        //sql injection protection for drop table
+        StringBuffer sb = new StringBuffer("drop");
+
+        if(studentG.getFirstName().contentEquals(sb)){
+            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(studentG.getUsername().contentEquals(sb)){
+            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(studentG.getAge().contentEquals(sb)){
+            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(studentG.getPhoneNumber().contentEquals(sb)){
+            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(studentG.getEmail().contentEquals(sb)){
+            Toast.makeText(getApplicationContext(),"Username is not valid. Try again.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+
         //adds the student info to the db
         dbHandler.addNewUserHandler(studentG);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("loggedIn",true);
+        editor.putString("username",studentG.getUsername());
+        editor.apply();
 
         //load homepage here
 
@@ -138,7 +169,8 @@ public class GeneralUserSurvey extends AppCompatActivity {
         MyDBHandler dbHandler = new MyDBHandler(this, "datingApp3.db", null, 1);
 
         //updating a student with general info from the values in the
-        StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()), String.valueOf(pwd.getText().hashCode()),
+        String pwdHash = dbHandler.hashPwd(String.valueOf(pwd.getText()));
+        StudentGeneral studentG = new StudentGeneral(String.valueOf(username.getText()),pwdHash,
                 String.valueOf(firstName.getText()), genderSpinner.getSelectedItem().toString(),
                 String.valueOf(age.getText()), String.valueOf(phoneNumber.getText()),
                 String.valueOf(email.getText()));
@@ -160,7 +192,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
         }
 
         //this is not working for some reason right now. the other one works.
-        else if(String.valueOf(pwd.getText()) != String.valueOf(confirmPwd.getText())) {
+        else if(!(String.valueOf(pwd.getText()).equals(String.valueOf(confirmPwd.getText())))) {
 
             pwd.setText("");
             confirmPwd.setText("");

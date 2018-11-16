@@ -17,10 +17,11 @@ import com.example.rpcum.studentdirectory.R;
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
+import com.example.rpcum.studentdirectory.Surveys.UpdateGeneralSurvey;
 
 public class Settings extends AppCompatActivity {
 
-    SharedPreferences sp = getSharedPreferences("loggedIn", MODE_PRIVATE);
+    SharedPreferences sp;
 
     private Button updateProfileButton, updateGeneralButton, logoutButton;
     private Intent intent;
@@ -52,6 +53,7 @@ public class Settings extends AppCompatActivity {
     private void init() {
         setupActionBar();
         setupButtons();
+        sp  = getSharedPreferences("loggedIn", MODE_PRIVATE);
     }
 
     private void setupActionBar() {
@@ -76,7 +78,7 @@ public class Settings extends AppCompatActivity {
         updateGeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(), GeneralUserSurvey.class);
+                intent = new Intent(getApplicationContext(), UpdateGeneralSurvey.class);
                 startActivity(intent);
             }
         });
