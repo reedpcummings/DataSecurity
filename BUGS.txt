@@ -1,0 +1,10 @@
+Bugs??
+-New User--> gen survey ->profile survey --> settings page
+	-Needs to go to homepage after completion of surveys not settings
+-Settings --> gen survey --> goes to profile survey 
+	-needs to go back to settings upon completion of gen survey from settings
+-Settings --> gen survey --> goes to profile survey -> App Crashes(ON LOGIN)
+-Register Button not visible on login page
+-search --> view profile-->App crashes
+-personal profile --> settings
+	-needs to go to profile page

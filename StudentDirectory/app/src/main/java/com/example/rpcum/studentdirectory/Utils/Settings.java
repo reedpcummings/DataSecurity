@@ -77,8 +77,9 @@ public class Settings extends AppCompatActivity {
 
         updateGeneralButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                intent = new Intent(getApplicationContext(), UpdateGeneralSurvey.class);
+            public void onClick(View view) {    //UpdateGeneralSurvey
+                intent = new Intent(getApplicationContext(), GeneralUserSurvey.class);
+                intent.putExtra("FROMSETTINGS", true);
                 startActivity(intent);
             }
         });

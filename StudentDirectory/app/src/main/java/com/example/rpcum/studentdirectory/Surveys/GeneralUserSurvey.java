@@ -4,10 +4,10 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
-
-import java.security.MessageDigest;
+import com.example.rpcum.studentdirectory.Utils.MyDBHandler;
+import com.example.rpcum.studentdirectory.Utils.Settings;
 
 public class GeneralUserSurvey extends AppCompatActivity {
 
@@ -27,12 +27,28 @@ public class GeneralUserSurvey extends AppCompatActivity {
     private ActionBar actionBar;
     private Intent intent;
     SharedPreferences sp;
+    private Intent lastActivity;
+    private int itemID;
+    private Intent intent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_user_survey);
         init();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        itemID = item.getItemId();
+
+        if(itemID == android.R.id.home){
+            intent1 = new Intent(getApplicationContext(), Settings.class);
+            startActivity(intent1);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void init() {
@@ -45,7 +61,7 @@ public class GeneralUserSurvey extends AppCompatActivity {
 
     private void setupActionBar() {
         actionBar = getSupportActionBar();
-        //actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupSpinner() {
@@ -69,9 +85,10 @@ public class GeneralUserSurvey extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                lastActivity = getIntent();
 
-
-                if(sp.getBoolean("loggedIn",false) || sp.getString("username","").equals(String.valueOf(username.getText()))) {
+                //if logged in as user
+                if(sp.getBoolean("loggedIn",false)) {
                     //usernameCheckOriginal();
                     if (confirmPwd()) {
                         updateStudentG();
@@ -79,25 +96,20 @@ public class GeneralUserSurvey extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
+                //redirect back to settings
+                else if(lastActivity.getBooleanExtra("FROMSETTINGS", false)){
+                    updateStudentG();
+                    intent = new Intent(getApplicationContext(), Settings.class);
+                    startActivity(intent);
+                }
+                //registering
                 else {
                         addStudentG();
                         intent = new Intent(getApplicationContext(), PersonalProfileSurvey.class);
+                        intent.putExtra("FROMGENSURVEY", true);
                         startActivity(intent);
                 }
 
-
-
-
-
-
-
-
-               /* Toast.makeText(getApplicationContext(),
-                        "First Name: " + String.valueOf(firstName.getText()) +
-                                "\nGender: " + String.valueOf(genderSpinner.getSelectedItem()) +
-                                "\nAge: " + String.valueOf(age.getText()) +
-                                "\nPhone Number: " + String.valueOf(phoneNumber.getText()) +
-                                "\nEmail: " + String.valueOf(email.getText()), Toast.LENGTH_LONG).show();*/
             }
         });
     }

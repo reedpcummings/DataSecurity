@@ -3,15 +3,11 @@ package com.example.rpcum.studentdirectory.Surveys;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
 import android.widget.TextView;
-import android.widget.GridView;
 
 import com.example.rpcum.studentdirectory.R;
+import com.example.rpcum.studentdirectory.Utils.MyDBHandler;
 
 import java.util.ArrayList;
 

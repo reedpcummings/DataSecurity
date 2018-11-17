@@ -1,4 +1,4 @@
-package com.example.rpcum.studentdirectory.Surveys;
+package com.example.rpcum.studentdirectory.Utils;
 
 import android.content.SharedPreferences;
 import android.database.CharArrayBuffer;
@@ -6,6 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+
+import com.example.rpcum.studentdirectory.Surveys.StudentGeneral;
+import com.example.rpcum.studentdirectory.Surveys.StudentPersonal;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;

@@ -12,7 +12,7 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:paddingBottom="70dp"
+        android:paddingBottom="30dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -20,14 +20,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="username"
-        style="@style/InputLabel"/>
+        android:text="Username"
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/username_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:hint="@string/username_hint"/>
 
     <TextView
         android:id="@+id/pwd_floating_view"
@@ -35,13 +36,14 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="Password"
-        style="@style/InputLabel"/>
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/pwd_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:hint="@string/password_hint"/>
 
     <TextView
         android:id="@+id/pwdConfirm_floating_view"
@@ -49,13 +51,14 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="Confirm Password"
-        style="@style/InputLabel"/>
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/pwdConfirm_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:hint="@string/password_hint"/>
 
     <TextView
         android:id="@+id/first_name_floating_view"
@@ -63,13 +66,14 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/firstName"
-        style="@style/InputLabel"/>
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/first_name_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:hint="@string/first_hint"/>
 
     <TextView
         android:id="@+id/gender_name_floating_view"
@@ -77,15 +81,15 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/gender"
-        android:paddingTop="35dp"
-        style="@style/InputLabel"/>
+        android:paddingTop="0dp"
+         android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/gender_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:entries="@array/gender_answers"
-        android:paddingBottom="35dp"
+        android:paddingBottom="0dp"
         android:prompt="@string/spinner_prompt">
     </Spinner>
 
@@ -95,13 +99,14 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/age"
-        style="@style/InputLabel"/>
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/age_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:hint="@string/age_hint"/>
 
     <TextView
         android:id="@+id/phone_number_floating_view"
@@ -109,14 +114,15 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/number"
-        android:paddingTop="35dp"
-        style="@style/InputLabel"/>
+        android:paddingTop="0dp"
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/phone_number_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="phone"/>
+        android:inputType="phone"
+        android:hint="@string/phone_hint"/>
 
     <TextView
         android:id="@+id/email_floating_view"
@@ -124,14 +130,15 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/email"
-        android:paddingTop="35dp"
-        style="@style/InputLabel"/>
+        android:paddingTop="0dp"
+         android:textStyle="italic"/>
 
     <EditText
         android:id="@+id/email_edit"
         android:layout_width="400dp"
         android:layout_height="match_parent"
-        android:inputType="textEmailAddress"/>
+        android:inputType="textEmailAddress"
+        android:hint="@string/email_hint"/>
 
     <Button
         android:id="@+id/submit_button"

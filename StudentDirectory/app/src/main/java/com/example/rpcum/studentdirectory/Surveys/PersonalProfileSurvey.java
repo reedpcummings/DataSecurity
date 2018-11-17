@@ -4,20 +4,18 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
+import com.example.rpcum.studentdirectory.Utils.MyDBHandler;
 import com.example.rpcum.studentdirectory.Utils.Settings;
-
-import java.util.ArrayList;
 
 public class PersonalProfileSurvey extends AppCompatActivity {
 
@@ -31,12 +29,28 @@ public class PersonalProfileSurvey extends AppCompatActivity {
     SharedPreferences sp;
     public String[] wants = new String[11];
     public int[] wantsValues = new int[11];
+    private Intent lastActivity;
+    private boolean checkLastActivity;
+    private int itemID;
+    private Intent intent1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_survey);
         init();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        itemID = item.getItemId();
+
+        if(itemID == android.R.id.home){
+            intent1 = new Intent(getApplicationContext(), Settings.class);
+            startActivity(intent1);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void init() {
@@ -47,7 +61,7 @@ public class PersonalProfileSurvey extends AppCompatActivity {
 
     private void setupActionBar() {
         actionBar = getSupportActionBar();
-        //actionBar.setTitle("");
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupSpinners() {
@@ -73,12 +87,22 @@ public class PersonalProfileSurvey extends AppCompatActivity {
 
             sp = getSharedPreferences("loggedIn",MODE_PRIVATE);
 
+            //check which activity launcged this one. use getintent with key from general user survey
             if(!(sp.getBoolean("search",false))) {
                 addStudentP();
-                intent = new Intent(getApplicationContext(), Settings.class);
-                startActivity(intent);
+                lastActivity = getIntent();
+
+                //redirect to homepage from new user registration
+                if(lastActivity.getBooleanExtra("FROMGENSURVEY", false)){
+                    intent = new Intent(getApplicationContext(), Homepage.class);
+                    startActivity(intent);
+                }
+                else {  //redirect back to settings after clicking submit survey
+                    intent = new Intent(getApplicationContext(), Settings.class);
+                    startActivity(intent);
+                }
             }
-            else {
+            else {  //redirect to searchresults
                 runSearch();
                 intent = new Intent(getApplicationContext(), SearchResults.class);
                 intent.putExtra("wants",wants);

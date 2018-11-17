@@ -3,7 +3,6 @@ package com.example.rpcum.studentdirectory.Surveys;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,10 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.R;
-
-import java.security.MessageDigest;
+import com.example.rpcum.studentdirectory.Utils.MyDBHandler;
 
 public class UpdateGeneralSurvey extends AppCompatActivity {
 

@@ -1,78 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login or Register"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        android:paddingBottom="70dp"
-        android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login Or Sign Up!"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="50sp"
+            android:paddingBottom="30dp"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/username_floating_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="username"
-        style="@style/InputLabel"/>
+        <TextView
+            android:id="@+id/username_floating_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="Username"
+            android:textStyle="italic"/>
 
-    <EditText
-        android:id="@+id/loginUsername_edit"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="username"/>
+        <EditText
+            android:id="@+id/loginUsername_edit"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="@string/username_hint"/>
 
-    <TextView
-        android:id="@+id/pwd_floating_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="32sp"
-        android:text="Password"
-        style="@style/InputLabel"/>
+        <TextView
+            android:id="@+id/pwd_floating_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="32sp"
+            android:text="Password"
+            android:textStyle="italic"/>
 
-    <EditText
-        android:id="@+id/loginPwd_edit"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password"/>
+        <EditText
+            android:id="@+id/loginPwd_edit"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password_hint"/>
 
-    <Button
-        android:id="@+id/loginSubmit_button"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:visibility="visible"
-        android:text="Log In"
-        android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/loginSubmit_button"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:text="Login"
+            android:paddingTop="20dp"
+            android:layout_gravity="center"/>
 
-    <Button
-        android:id="@+id/register_button"
-        android:layout_width="400dp"
-        android:layout_height="50dp"
-        android:visibility="visible"
-        android:text="New User"
-        android:layout_gravity="center"/>
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:visibility="visible"
+            android:text="Sign Up"
+            android:layout_gravity="center|bottom"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

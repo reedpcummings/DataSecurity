@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:textSize="50sp"
-        android:paddingBottom="70dp"
+        android:paddingBottom="30dp"
         android:textStyle="bold"/>
 
     <TextView
@@ -25,13 +25,13 @@
         android:layout_height="wrap_content"
         android:text="@string/read"
         android:textSize="32sp"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/read_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -42,13 +42,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/movies"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/movies_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -59,13 +59,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/hookup"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/hookup_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -76,13 +76,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/sports"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/sports_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -93,13 +93,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/workout"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/workout_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -110,13 +110,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/hiking"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/hiking_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -127,13 +127,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/religious"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/religious_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -144,13 +144,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/social"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/social_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -161,13 +161,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/drink"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/drink_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -178,13 +178,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/smoke"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/smoke_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
@@ -195,13 +195,13 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:text="@string/music"
-        style="@style/InputLabel"/>
+        android:textStyle="italic"/>
 
     <Spinner
         android:id="@+id/music_spinner"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:paddingBottom="35dp"
+        android:paddingBottom="15dp"
         android:entries="@array/survey_personal_answers"
         android:prompt="@string/spinner_prompt">
     </Spinner>
