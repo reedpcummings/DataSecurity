@@ -27,7 +27,6 @@
         <activity android:name=".Surveys.PersonalProfileSurvey" />
         <activity android:name=".Utils.Settings" />
         <activity android:name=".MainScreens.MatchResults" />
-        <activity android:name=".Surveys.UpdateGeneralSurvey" />
         <activity android:name=".Surveys.SearchResults"/>
         <activity android:name=".MainScreens.PersonalProfilePage"></activity>
     </application>

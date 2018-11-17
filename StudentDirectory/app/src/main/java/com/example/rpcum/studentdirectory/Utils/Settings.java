@@ -17,7 +17,6 @@ import com.example.rpcum.studentdirectory.R;
 import com.example.rpcum.studentdirectory.MainScreens.Homepage;
 import com.example.rpcum.studentdirectory.Surveys.PersonalProfileSurvey;
 import com.example.rpcum.studentdirectory.Surveys.GeneralUserSurvey;
-import com.example.rpcum.studentdirectory.Surveys.UpdateGeneralSurvey;
 
 public class Settings extends AppCompatActivity {
 
